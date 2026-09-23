@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NewsAPI Project</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+
+
+<div class="table-card">
+    <div class="title-section">
+        <h1>NewsAPI Project</h1>
+        <p>This project updates News Articles and provides keywords based on each title.</p>
+    </div>
+    <div class="user-input-section">
+
+        <form id="search-form" method="POST" action="/search">
+            <div class="article-selection">
+                <h2>Article Selections</h2>
+                <label>Choose Date</label>
+                <input type="date" name="date"><br>
+                <label for="categories">Choose Category</label>
+                    <select name="categories" id="category">
+                        <option value="business">Business</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="general">general</option>
+                        <option value="health">Health</option>
+                        <option value="science">Science</option>
+                        <option value="sports">Sports</option>
+                        <option value="technology">Technology</option>
+                    </select>
+                <br>
+                <label for="sources">Choose Source</label>
+                    <select name="sources" id="source">
+                        <option value="Any">Any</option>
+                        <option value="The New York Times">The New York Times</option>
+                        <option value="The Washington Post">The Washington Post</option>
+                        <option value="The Wall Street Journal">The Wall Street Journal</option>
+                        <option value="BBC">BBC</option>
+                        <option value="The Economist">The Economist</option>
+                        <option value="The New Yorker">The New Yorker</option>
+                        <option value="The Associated Press">The Associated Press</option>
+                        <option value="Foreign Affairs">Foreign Affairs</option>
+                        <option value="The Atlantic">The Atlantic</option>
+                        <option value="Politico">Politico</option>
+                        <option value="Reuters">Reuters</option>
+                        <option value="Bloomberg News">Bloomberg News</option>
+                    </select><br>
+                <label>Keywords</label>
+                <input name="keywords" placeholder="Type related Keywords"></input><br>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+        
+
+        <form id="keyword-form" method="POST" action="/keyword-filter"> 
+            <div class="keywordlist-section">
+                <div class="keyword-input">
+                    <h2>Keyword Exclusion</h2>
+                    <input name="keyword-add"> <label>Add - Keyword Exclude List</label><br>
+                    <input name="keyword-drop"><label>Remove - Keyword Exclude List</label><br>
+                    <button type="submit">Submit</button>
+                </div>
+        </form>
+
+                <div class="keywordlist">
+                    <h3>Keyword Exclusion List</h3>
+                    <div id="keyword-box" class="keyword-box">
+                        {% for word in keyword_exclusion_list %}
+
+                            <form method="POST" action="/keyword-remove">
+                                
+                                <div class="keyword">
+                                    <p>{{ word }}</p>
+                                    <input type="hidden" name="keyword" value="{{ word }}">
+                                    <button type="submit">x</button>
+                                </div>
+                            </form>
+
+                        {% endfor %}
+                    </div>
+                </div>
+
+        </div>
+    </div>
+    <table class="news-table">
+        <h2>Title Table</h2>
+        <tr class="headers">
+            <th>Title</th>
+            <th>Author</th>
+            <th>Description</th>
+            <th>Country</th>
+            <th>publishedAt</th>
+            <th>Content</th>
+            <th>Source</th>
+            <th>URL</th>
+            <th>Keywords</th>
+        </tr>
+        
+        <tbody id="article-table">
+        </tbody>
+    </table>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

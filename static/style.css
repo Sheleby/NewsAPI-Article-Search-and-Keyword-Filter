@@ -1,0 +1,105 @@
+/*
+table-card
+    title-section
+    user-input-section
+        article-selection
+        keywordlist-input
+            keyword-input
+            keywordlist
+                keyword-box
+                    keyword, button
+    news-table
+
+*/
+
+.table-card {
+    width: fit-content;
+    border-radius: 25px;
+    box-shadow: 100%;
+    background-color: lightcyan;
+    align-self: center;
+    padding: 40px;
+}
+
+.title-section {
+    padding: 3px 20px 10px 10px;
+    border-radius: 20px;
+    background-color: lightblue;
+}
+
+.user-input-section {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 30px;
+    align-items: right;
+}
+
+.article-selection {
+    padding-right: 40px;
+    padding-bottom: 20px;
+}
+
+.keywordlist-section input, button {
+    margin-bottom: 10px;
+}
+
+/*
+.keywordlist {
+
+}
+*/
+
+.keyword-box {
+    border: 1px solid black;
+    background-color: white;
+    display: flex;
+}
+
+.keyword {
+    background-color: #E01239;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 15px;
+    padding: 5px 5px 5px 10px;
+    width: fit-content;
+}
+
+.keyword p {
+    color: white;
+    padding-right: 4px;
+    width: fit-content;
+    height: fit-content;
+    margin: 0;
+}
+
+.keyword button {
+    display: inline-block;
+    align-item: center;
+    margin: 0;
+    border-radius: 25px;
+    border: none;
+}
+
+.news-table {
+    align-self: center;
+}
+
+.news-table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px 5px 5px 5px;
+    width: auto;
+}
+
+th, td {
+    text-align: center;
+}
+
+th {
+    background-color: lightblue;
+}
+
+td {
+    background-color: white;
+}
